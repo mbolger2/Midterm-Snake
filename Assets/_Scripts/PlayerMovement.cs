@@ -76,19 +76,19 @@ public class PlayerMovement : MonoBehaviour
             transform.position.y);
 
         
-        if (Input.GetButtonDown("left"))
-        {
-            gameObject.transform.eulerAngles = new Vector3(0, 0, -90);
-        }
-        else if (Input.GetButtonDown("right"))
+        if (Input.GetAxisRaw("Horizontal") < 0 && rb.velocity.x <= 0)
         {
             gameObject.transform.eulerAngles = new Vector3(0, 0, 90);
         }
-        else if (Input.GetButtonDown("up"))
+        else if (Input.GetAxisRaw("Horizontal") > 0 && rb.velocity.x >= 0)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 0, -90);
+        }
+        else if (Input.GetAxisRaw("Vertical") > 0 && rb.velocity.y >= 0)
         {
             gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else if (Input.GetButtonDown("down"))
+        else if (Input.GetAxisRaw("Vertical") < 0 && rb.velocity.y <= 0)
         {
             gameObject.transform.eulerAngles = new Vector3(0, 0, 180);
         }
