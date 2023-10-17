@@ -23,121 +23,48 @@ public class PlayerMovement : MonoBehaviour
         rb = this.gameObject.GetComponent<Rigidbody2D>();
     }
 
-    void RotatePlayer90()
-    {
-        gameObject.transform.eulerAngles = new Vector3(0, 0,
-            gameObject.transform.eulerAngles.z + 90);
-        //// x-axis movement
-        //float h = Input.GetAxis("Horizontal");
-
-        //// y-axis movement
-        //float v = Input.GetAxis("Vertical");
-
-        //if (rb.velocity.x == 0)
-        //{
-        //    if (h > 0)
-        //    {
-
-        //        gameObject.transform.eulerAngles = new Vector3(0, 0,
-        //            gameObject.transform.eulerAngles.z + 90);
-        //    }
-        //    else if (h < 0)
-        //    {
-        //        gameObject.transform.eulerAngles = new Vector3(0, 0,
-        //            gameObject.transform.eulerAngles.z - 90);
-        //    }
-        //}
-        //if (rb.velocity.y == 0)
-        //{
-        //    if (v > 0)
-        //    {
-
-        //        gameObject.transform.eulerAngles = new Vector3(0, 0,
-        //            gameObject.transform.eulerAngles.z + 90);
-        //    }
-        //    else if (v < 0)
-        //    {
-        //        gameObject.transform.eulerAngles = new Vector3(0, 0,
-        //            gameObject.transform.eulerAngles.z - 90);
-        //    }
-        //}
-    }
-
-    void RotatePlayerNeg90()
-    {
-        gameObject.transform.eulerAngles = new Vector3(0, 0,
-            gameObject.transform.eulerAngles.z - 90);
-    }
-    // Update is called once per frame
+    
     void Update()
     {
         // Move the player constantly
         rb.transform.position = new Vector2(transform.position.x,
             transform.position.y);
 
-        
+        // The input is left and the player is not moving right
         if (Input.GetAxisRaw("Horizontal") < 0 && rb.velocity.x <= 0)
         {
+            // Rotate gameobject to face left
             gameObject.transform.eulerAngles = new Vector3(0, 0, 90);
+
+            // Move the player left
+            rb.transform.position = new Vector2(transform.position.x - (speed / 10), transform.position.y);
         }
+        // The input is right and the player is not moving left
         else if (Input.GetAxisRaw("Horizontal") > 0 && rb.velocity.x >= 0)
         {
+            // Rotate gameobject to face right
             gameObject.transform.eulerAngles = new Vector3(0, 0, -90);
+
+            // Move the player right
+            rb.transform.position = new Vector2(transform.position.x + (speed / 10), transform.position.y);
         }
+        // The input is up and the player is not moving down
         else if (Input.GetAxisRaw("Vertical") > 0 && rb.velocity.y >= 0)
         {
+            // Rotate gameobject to face up
             gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            // Move the player up
+            rb.transform.position = new Vector2(transform.position.x, transform.position.y + (speed / 10));
         }
+        // The input is down and the player is not moving up
         else if (Input.GetAxisRaw("Vertical") < 0 && rb.velocity.y <= 0)
         {
+            // Rotate gameobject to face down
             gameObject.transform.eulerAngles = new Vector3(0, 0, 180);
+
+            // Move the player down
+            rb.transform.position = new Vector2(transform.position.x, transform.position.y - (speed / 10));
         }
-
-        
-
-
-        //// Gets the player input and sets dir
-        //// to the correct vector2 (0,0)
-        //if (Input.GetKey(KeyCode.DownArrow))
-        //{
-        //    dir = Vector2.down;
-        //}
-        //else if (Input.GetKey(KeyCode.UpArrow))
-        //{
-        //    dir = Vector2.up;
-        //}
-        //else if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    dir = Vector2.right;
-        //}
-        //else if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    dir = Vector2.left;
-        //}
-    }
-
-    //// Function to move the player
-    //void Move()
-    //{
-    //    // Moves the transform in the direction
-    //    // of dir
-    //    transform.Translate(dir);
-
-    //    if ( dir.x == 1)
-    //    {
-    //        this.transform.Rotate(90, 0, 0);
-    //    }
-    //    else if ( dir.x == -1)
-    //    {
-    //        this.transform.Rotate(-90, 0, 0);
-    //    }
-    //    else if ( dir.y == 1)
-    //    {
-    //        this.transform.Rotate(0, 0, 0);
-    //    }
-    //    else if ( dir.y == -1)
-    //    {
-    //        this.transform.Rotate(180, 0, 0);
-    //    }
-    
+    }    
 }
