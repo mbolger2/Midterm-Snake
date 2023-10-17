@@ -18,37 +18,40 @@ public class PlayerMovement : MonoBehaviour
     {
         // Find a rigidbody2d on the object and assign
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+
+        // Call the move function .5 second after start,
+        // and every .5 seconds after
+        InvokeRepeating("Move", 0.5f, 0.5f);
     }
 
-    
-    void Update()
+    void Move()
     {
         // The player is facing up
         if (gameObject.transform.eulerAngles.z == 0)
         {
             // Move the player up
             rb.transform.position = new Vector2(transform.position.x,
-            transform.position.y + (speed / 10));
+            transform.position.y + speed);
         }
         // The player is facing down
         else if (gameObject.transform.eulerAngles.z == 180)
         {
             // Move the player up
             rb.transform.position = new Vector2(transform.position.x,
-            transform.position.y - (speed / 10));
+            transform.position.y - speed);
         }
         // The player is facing left
         else if (gameObject.transform.eulerAngles.z == 90)
         {
             // Move the player left
-            rb.transform.position = new Vector2(transform.position.x - (speed / 10),
+            rb.transform.position = new Vector2(transform.position.x - speed,
                 transform.position.y);
         }
         // The player is facing right
         else if (gameObject.transform.eulerAngles.z == -90)
         {
             // Move the player right
-            rb.transform.position = new Vector2(transform.position.x + (speed / 10),
+            rb.transform.position = new Vector2(transform.position.x + speed,
                 transform.position.y);
         }
 
@@ -77,5 +80,11 @@ public class PlayerMovement : MonoBehaviour
             // Rotate gameobject to face down
             gameObject.transform.eulerAngles = new Vector3(0, 0, 180);
         }
+    }
+
+    void Update()
+    {
+        
+
     }    
 }

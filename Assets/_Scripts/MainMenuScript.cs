@@ -7,8 +7,6 @@ public class MainMenuScript : MonoBehaviour
 {
     public void StartGame(string sceneName)
     {
-        Debug.Log("Start");
-
         SceneManager.LoadScene(sceneName);
     }
 
