@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Vector2 dir = Vector2.up;
-
     // The speed of the player
     public float speed;
 
@@ -14,11 +12,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Invokes the methodname (the function Move)
-        // .3 seconds after starting and every .3
-        // seconds after
-        // InvokeRepeating("Move", 0.3f, 0.3f);
-
         // Find a rigidbody2d on the object and assign
         rb = this.gameObject.GetComponent<Rigidbody2D>();
     }
