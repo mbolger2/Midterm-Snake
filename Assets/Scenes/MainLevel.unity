@@ -667,7 +667,7 @@ MonoBehaviour:
   - {fileID: 786623487}
   - {fileID: 1755543790}
   - {fileID: 1920485088}
-  spawnRate: 1
+  spawnCounter: 0
 --- !u!1 &164887062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,7 +2564,7 @@ GameObject:
   - component: {fileID: 491259712}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

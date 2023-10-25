@@ -10,27 +10,14 @@ public class GoalSpawn : MonoBehaviour
     // Defining an array to hold the possible spawn points
     public GameObject[] spawnPoints = new GameObject[81];
 
-    // The seconds between the instantiation of each goal
-    public float spawnRate = 1.0f;
-
     // A counter
-    private float spawnCounter = 0.0f;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawnCounter += Time.deltaTime;
-    }
+    public int spawnCounter = 0;
 
     // Update is called once per frame
     void Update()
     {
-        // The delta time is added to keep track of time
-        spawnCounter += Time.deltaTime;
-
         // If the counter has surpassed rate
-        if (spawnCounter > spawnRate)
+        if (spawnCounter < 1)
         {
             int randomIndex = Random.Range(0, spawnPoints.Length);
 
@@ -42,7 +29,7 @@ public class GoalSpawn : MonoBehaviour
             Instantiate(goalPrefab);
 
             // Reset spawn counter
-            spawnCounter = 0.0f;
+            spawnCounter = 1;
         }
     }
 }
