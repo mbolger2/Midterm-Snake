@@ -5,14 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // The speed of the player
-    public float speed;
+    public float speed = 1.0f;
 
-    //The maximum and minimum position of the ship in each axis
-    public Vector2 movementBoundariesMin;
-    public Vector2 movementBoundariesMax;
+    // Variable to hold time passed
+    public float timePassed;
 
     // The rigidbody that controls the player
     public Rigidbody2D rb;
+
+    int direction = 0;
+    
+    // Assign in move function and make it the second statement after &&
+    int lastDirection = 0;
 
     void Start()
     {
@@ -26,65 +30,82 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        // The player is facing up
-        if (gameObject.transform.eulerAngles.z == 0)
+        // The player input is up
+        if (direction == 0)
         {
+            // Rotate gameobject to face up
+            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+
             // Move the player up
             rb.transform.position = new Vector2(transform.position.x,
             transform.position.y + speed);
+
+            lastDirection = direction;
+
         }
-        // The player is facing down
-        else if (gameObject.transform.eulerAngles.z == 180)
+        // The player input is down
+        else if (direction == 1)
         {
-            // Move the player up
+            // Rotate gameobject to face down
+            gameObject.transform.eulerAngles = new Vector3(0, 0, 180);
+
+            // Move the player down
             rb.transform.position = new Vector2(transform.position.x,
             transform.position.y - speed);
-        }
-        // The player is facing left
-        else if (gameObject.transform.eulerAngles.z == 90)
-        {
-            // Move the player left
-            rb.transform.position = new Vector2(transform.position.x - speed,
-                transform.position.y);
-        }
-        // The player is facing right
-        else if (gameObject.transform.eulerAngles.z == -90)
-        {
-            // Move the player right
-            rb.transform.position = new Vector2(transform.position.x + speed,
-                transform.position.y);
-        }
 
-        // The input is left and the player is not moving right
-        if (Input.GetAxisRaw("Horizontal") < 0 && rb.velocity.x <= 0)
+            lastDirection = direction;
+
+        }
+        // The player input is left
+        else if (direction == 2)
         {
             // Rotate gameobject to face left
             gameObject.transform.eulerAngles = new Vector3(0, 0, 90);
+
+            // Move the player left
+            rb.transform.position = new Vector2(transform.position.x - speed,
+                transform.position.y);
+
+            lastDirection = direction;
         }
-        // The input is right and the player is not moving left
-        else if (Input.GetAxisRaw("Horizontal") > 0 && rb.velocity.x >= 0)
+        // The player input is right
+        else if (direction == 3)
         {
             // Rotate gameobject to face right
             gameObject.transform.eulerAngles = new Vector3(0, 0, -90);
 
-        }
-        // The input is up and the player is not moving down
-        else if (Input.GetAxisRaw("Vertical") > 0 && rb.velocity.y >= 0)
-        {
-            // Rotate gameobject to face up
-            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        // The input is down and the player is not moving up
-        else if (Input.GetAxisRaw("Vertical") < 0 && rb.velocity.y <= 0)
-        {
-            // Rotate gameobject to face down
-            gameObject.transform.eulerAngles = new Vector3(0, 0, 180);
+            // Move the player right
+            rb.transform.position = new Vector2(transform.position.x + speed,
+                transform.position.y);
+
+            lastDirection = direction;
+
         }
     }
 
     void Update()
     {
-        
+        timePassed += Time.deltaTime;
 
+        // The input is left and the player is not facing right
+        if (Input.GetAxisRaw("Horizontal") < 0 && lastDirection != 3)
+        {
+            direction = 2;
+        }
+        // The input is right and the player is not facing left
+        else if (Input.GetAxisRaw("Horizontal") > 0 && lastDirection != 2)
+        {
+            direction = 3;
+        }
+        // The input is up and the player is not facing down
+        else if (Input.GetAxisRaw("Vertical") > 0 && lastDirection != 1)
+        {
+            direction = 0;
+        }
+        // The input is down and the player is not facing up
+        else if (Input.GetAxisRaw("Vertical") < 0 && lastDirection != 0)
+        {
+            direction = 1;
+        }
     }    
 }
