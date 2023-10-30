@@ -10,8 +10,11 @@ public class GoalSpawn : MonoBehaviour
     // Defining an array to hold the possible spawn points
     public GameObject[] spawnPoints = new GameObject[81];
 
-    // A counter
+    // A counter that holds the number of goals spawned
     public int spawnCounter = 0;
+
+    // A global variable to help spawn goals
+    //static int tempSpawnCounter = 0;
 
     // Update is called once per frame
     void Update()
@@ -26,10 +29,11 @@ public class GoalSpawn : MonoBehaviour
 
             // Spawn the goal prefab at the position of the randomly selected
             // spawnpoint
-            Instantiate(goalPrefab);
+            Instantiate(goalPrefab, spawnPoints[randomIndex].transform);
 
             // Reset spawn counter
             spawnCounter = 1;
+            // tempSpawnCounter = 1;
         }
     }
 }

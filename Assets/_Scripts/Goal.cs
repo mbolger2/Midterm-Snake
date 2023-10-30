@@ -13,11 +13,18 @@ public class Goal : MonoBehaviour
     {
         Debug.Log("Collided with object " + other.gameObject.name);
 
+        // The player collides with the goal
         if (other.CompareTag(scoringTag))
         {
+            // remove the goal
             Destroy(this.gameObject);
 
-            // GoalSpawn.
+            // Set the count of goals to 0
+            // Ask in class or in AAC
+
+            // Increase the score
+            ScoreManager.Instance.AddScore(1);
+
         }
     }
 }
