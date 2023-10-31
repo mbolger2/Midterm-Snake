@@ -14,14 +14,23 @@ public class Projectile : MonoBehaviour
     // this Proj has been around for
     private float lifetimeCounter;
 
-    // Update is called once per frame
-    void Update()
+    // Rb of the proj
+    public Rigidbody2D projRig;
+
+    void Start()
     {
-        // The deltaTime is added to the counter
+        projRig = this.gameObject.GetComponent<Rigidbody2D>();
+    }
+    // Update is called once per frame
+    private void Update()
+    {
         lifetimeCounter += Time.deltaTime;
-        
+
         // We use the function to keep update clean
         MoveProj();
+
+        //// The deltaTime is added to the counter
+        //lifetimeCounter += Time.deltaTime;
 
         // If the counter has exceexed the lifetime
         if (lifetimeCounter > lifetime)
@@ -34,14 +43,13 @@ public class Projectile : MonoBehaviour
     // Function moves the Proj
     void MoveProj()
     {
-        // We define a new position vector to easily modify values
-        Vector3 newPos = transform.position;
 
-        // We set the new position to be "speed" units along
-        // the forward direction
-        newPos += transform.forward * speed * Time.deltaTime;
+        // projRig.transform.position = new Vector2(transform.position)
+    }
 
-        // Set the new position of the Proj
-        transform.position = newPos;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        Destroy(this);
     }
 }

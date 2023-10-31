@@ -13,8 +13,17 @@ public class GoalSpawn : MonoBehaviour
     // A counter that holds the number of goals spawned
     public int spawnCounter = 0;
 
-    // Set the instance
     public static GoalSpawn Instance;
+
+    public void SetSpawnCounter(int temp)
+    {
+        spawnCounter = temp;
+    }
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,8 +40,8 @@ public class GoalSpawn : MonoBehaviour
             // spawnpoint
             Instantiate(goalPrefab, spawnPoints[randomIndex].transform);
 
-            // Reset spawn counter
-            spawnCounter = 1;
+            // Set spawn counter
+            spawnCounter ++;
         }
     }
 }

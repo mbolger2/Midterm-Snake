@@ -326,4 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18bd8df944d7e24d8caada8fa63290f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionTag: Projectile
+  projTag: Projectile
+  playerTag: Player
+  lossScene: LossMenu

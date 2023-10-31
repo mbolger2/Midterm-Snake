@@ -14,12 +14,12 @@ public class ObstacleSpawn : MonoBehaviour
     public int spawnCounter = 0;
 
     // Set the instance
-    // public static ObstacleSpawn Instance;
+    public static ObstacleSpawn Instance;
 
     public void SpawnObstacle()
     {
         // If the counter has surpassed rate
-        if (spawnCounter < 3)
+        if (spawnCounter < 2)
         {
             int randomIndex = Random.Range(0, spawnPoints.Length);
 
@@ -33,6 +33,16 @@ public class ObstacleSpawn : MonoBehaviour
             // Increment up by 1
             spawnCounter++;
         }
+    }
+
+    public void DecreaseObstacle()
+    {
+        spawnCounter--;
+    }
+
+    private void Start()
+    {
+        Instance = this;
     }
 
     // Update is called once per frame

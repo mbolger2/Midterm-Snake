@@ -13,15 +13,25 @@ public class PlayerMovement : MonoBehaviour
     // The rigidbody that controls the player
     public Rigidbody2D rb;
 
-    int direction = 0;
+    public int direction = 0;
     
     // Assign in move function and make it the second statement after &&
     int lastDirection = 0;
+
+    public static PlayerMovement Instance;
+
+    // The proj prefab
+    public Projectile projectilePrefab;
+
+    // 
+    public Transform projectilePoint;
 
     void Start()
     {
         // Find a rigidbody2d on the object and assign
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+
+        Instance = this;
 
         // Call the move function .5 second after start,
         // and every .5 seconds after
@@ -87,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
         timePassed += Time.deltaTime;
 
+        // Movement
         // The input is left and the player is not facing right
         if (Input.GetAxisRaw("Horizontal") < 0 && lastDirection != 3)
         {
@@ -107,5 +118,16 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = 1;
         }
-    }    
+
+        // Shooting
+        if (Input.GetButtonDown("Jump"))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        Instantiate(projectilePrefab, projectilePoint.position, projectilePoint.rotation);
+    }
 }
