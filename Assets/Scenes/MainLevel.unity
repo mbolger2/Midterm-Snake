@@ -11601,7 +11601,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1058482503117745321, guid: 9bb50d0dbdd7fb64dbf7b2b2829cb620, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9bb50d0dbdd7fb64dbf7b2b2829cb620, type: 3}
 --- !u!4 &1745353406 stripped
 Transform:
@@ -14482,7 +14483,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tail
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6522727121817148661, guid: e3aabf64e4e790d46905d31fff5d6be3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3aabf64e4e790d46905d31fff5d6be3, type: 3}
 --- !u!4 &2041446752 stripped
 Transform:

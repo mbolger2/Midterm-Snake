@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour
     public string scoringTag = "Player";
 
   
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collided with object " + other.gameObject.name);
 
@@ -20,7 +20,7 @@ public class Goal : MonoBehaviour
             Destroy(this.gameObject);
 
             // Set the count of goals to 0
-            // Ask in class or in AAC
+            GoalSpawn.Instance.spawnCounter = 0;
 
             // Increase the score
             ScoreManager.Instance.AddScore(1);

@@ -13,14 +13,13 @@ public class ObstacleSpawn : MonoBehaviour
     // A counter that holds the number of goals spawned
     public int spawnCounter = 0;
 
-    // A global variable to help spawn goals
-    //static int tempSpawnCounter = 0;
+    // Set the instance
+    public static ObstacleSpawn Instance;
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnObstacle()
     {
         // If the counter has surpassed rate
-        if (spawnCounter < 1)
+        if (spawnCounter < 3)
         {
             int randomIndex = Random.Range(0, spawnPoints.Length);
 
@@ -31,9 +30,16 @@ public class ObstacleSpawn : MonoBehaviour
             // spawnpoint
             Instantiate(obstaclePrefab, spawnPoints[randomIndex].transform);
 
-            // Reset spawn counter
-            spawnCounter = 1;
-            // tempSpawnCounter = 1;
+            // Increment up by 1
+            spawnCounter++;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Call the SpawnObstacle Function
+        SpawnObstacle();
+        
     }
 }

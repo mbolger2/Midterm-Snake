@@ -13,8 +13,8 @@ public class GoalSpawn : MonoBehaviour
     // A counter that holds the number of goals spawned
     public int spawnCounter = 0;
 
-    // A global variable to help spawn goals
-    //static int tempSpawnCounter = 0;
+    // Set the instance
+    public static GoalSpawn Instance;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +33,6 @@ public class GoalSpawn : MonoBehaviour
 
             // Reset spawn counter
             spawnCounter = 1;
-            // tempSpawnCounter = 1;
         }
     }
 }
