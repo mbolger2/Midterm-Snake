@@ -4280,7 +4280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootButton: Jump
   projectile: {fileID: 4860034574648306744, guid: 58df323c25477844b8a1f646a903b3bf, type: 3}
-  fireRate: 2
+  fireRate: 0.5
 --- !u!1 &491769610
 GameObject:
   m_ObjectHideFlags: 0

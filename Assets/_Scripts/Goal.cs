@@ -20,7 +20,7 @@ public class Goal : MonoBehaviour
             Destroy(this.gameObject);
 
             // Set the count of goals to 0
-            GoalSpawn.Instance.spawnCounter = 0;
+            // GoalSpawn.Instance.spawnCounter = 0;
 
             // Increase the score
             ScoreManager.Instance.AddScore(1);

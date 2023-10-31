@@ -21,7 +21,7 @@ public class Obstacle : MonoBehaviour
 
             // Set the spawnCounter on the obstacle
             // script to decrement by 1
-            ObstacleSpawn.Instance.spawnCounter--;
+            // ObstacleSpawn.Instance.spawnCounter--;
 
         }
     }

@@ -14,7 +14,7 @@ public class ObstacleSpawn : MonoBehaviour
     public int spawnCounter = 0;
 
     // Set the instance
-    public static ObstacleSpawn Instance;
+    // public static ObstacleSpawn Instance;
 
     public void SpawnObstacle()
     {
