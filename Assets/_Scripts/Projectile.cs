@@ -17,11 +17,11 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // We use the function to keep update clean
-        // MoveProjectile();
-
         // The deltaTime is added to the counter
         lifetimeCounter += Time.deltaTime;
+        
+        // We use the function to keep update clean
+        MoveProj();
 
         // If the counter has exceexed the lifetime
         if (lifetimeCounter > lifetime)
