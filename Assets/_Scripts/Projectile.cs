@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     // The counter that keeps track of how long
     // this Proj has been around for
-    private float lifetimeCounter;
+    public float lifetimeCounter;
 
     // Rb of the proj
     public Rigidbody2D projRig;
@@ -26,25 +26,35 @@ public class Projectile : MonoBehaviour
     {
         lifetimeCounter += Time.deltaTime;
 
-        // We use the function to keep update clean
-        MoveProj();
+        if (lifetimeCounter > 0.5)
+        {
+            // We use the function to keep update clean
+            MoveProj();
+
+            lifetimeCounter = 0;
+        }
+
+        
 
         //// The deltaTime is added to the counter
         //lifetimeCounter += Time.deltaTime;
 
         // If the counter has exceexed the lifetime
-        if (lifetimeCounter > lifetime)
-        {
-            // Destroy the Proj
-            Destroy(this);
-        }
+        //if (lifetimeCounter > lifetime)
+        //{
+        //    // Destroy the Proj
+        //    Destroy(this);
+        //}
     }
 
     // Function moves the Proj
     void MoveProj()
     {
-
-        // projRig.transform.position = new Vector2(transform.position)
+        if (projRig.transform.eulerAngles == new Vector3(0, 0, 0))
+        {
+            //projRig.transform.position = projRig.transform.up; 
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
