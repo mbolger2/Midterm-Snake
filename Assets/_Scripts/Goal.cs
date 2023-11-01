@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collided with object " + other.gameObject.name);
+        // Debug.Log("Collided with object " + other.gameObject.name);
 
         // The player collides with the goal
         if (other.CompareTag(scoringTag))

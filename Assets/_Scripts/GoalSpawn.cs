@@ -34,7 +34,7 @@ public class GoalSpawn : MonoBehaviour
             int randomIndex = Random.Range(0, spawnPoints.Length);
 
             // Message to know where spawn
-            Debug.Log("Spawning goal at " + spawnPoints[randomIndex].name);
+            // Debug.Log("Spawning goal at " + spawnPoints[randomIndex].name);
 
             // Spawn the goal prefab at the position of the randomly selected
             // spawnpoint

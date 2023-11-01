@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Debug statement
-        Debug.Log("Collided with object " + other.gameObject.name);
+        // Debug.Log("Collided with object " + other.gameObject.name);
 
         // The projectile collides with the goal
         if (other.CompareTag(projTag))
