@@ -8,6 +8,8 @@ TagManager:
   - Goal
   - Border
   - Body
+  - Undefined
+  - Launch
   layers:
   - Default
   - TransparentFX
@@ -15,11 +17,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Goal
+  - Border
+  - Body
+  - Launch
+  - Projectile
   - 
   - 
   - 

@@ -4349,18 +4349,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Head
       objectReference: {fileID: 0}
-    - target: {fileID: 6723738082208337211, guid: 68ad80425ea2a9e4a991e13407d7d09d, type: 3}
-      propertyPath: winScene
-      value: WinMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723738082208337211, guid: 68ad80425ea2a9e4a991e13407d7d09d, type: 3}
-      propertyPath: lossScene
-      value: LossMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723738082208337211, guid: 68ad80425ea2a9e4a991e13407d7d09d, type: 3}
-      propertyPath: bodyPrefab
-      value: 
-      objectReference: {fileID: 1058482503117745320, guid: 9bb50d0dbdd7fb64dbf7b2b2829cb620, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68ad80425ea2a9e4a991e13407d7d09d, type: 3}
 --- !u!1 &475439761

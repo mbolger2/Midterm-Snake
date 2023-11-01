@@ -10,9 +10,10 @@ public class PlayerCrossover : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Body")
+        if (other.gameObject.tag == "Body")
         {
             SceneManager.LoadScene(lossScene);
         }
+        
     }
 }

@@ -13,6 +13,6 @@ public class MainMenuScript : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        Debug.Log("Exit");
+        // Debug.Log("Exit");
     }
 }
