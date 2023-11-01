@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Movement")]
     // The speed of the player
     public float speed = 1.0f;
 
@@ -14,22 +16,38 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     public int direction = 0;
-    
+
     // Assign in move function and make it the second statement after &&
     int lastDirection = 0;
 
     public static PlayerMovement Instance;
 
+    [Header("Projectile")]
     // The proj prefab
     public Projectile projectilePrefab;
 
-    // 
+    // The point the projectile spawns at
     public Transform projectilePoint;
+
+    [Header("Segments")]
+    // The list containing the segments for the snake
+    private List<Transform> segments = new List<Transform>();
+
+    // The prefab for the body segment
+    public Transform bodyPrefab;
+
+    [Header("Scenes")]
+    public string lossScene;
+    public string winScene;
+
 
     void Start()
     {
         // Find a rigidbody2d on the object and assign
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+
+        //
+        segments.Add(this.transform);
 
         Instance = this;
 
@@ -40,6 +58,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        // Loop to move the bodysegments in reverse order
+        // (Set the last body postion to the one in front)
+        for (int i = segments.Count - 1; i > 0; i--)
+        {
+            segments[i].position = segments[i - 1].position;
+            segments[i].rotation = segments[i - 1].rotation;
+        }
+
+        // Move the head last so that the body can follow
         // The player input is up
         if (direction == 0)
         {
@@ -124,10 +151,45 @@ public class PlayerMovement : MonoBehaviour
         {
             Shoot();
         }
+
+        if (segments.Count == 81)
+        {
+            SceneManager.LoadScene(winScene);
+        }
     }
 
     void Shoot()
     {
         Instantiate(projectilePrefab, projectilePoint.position, projectilePoint.rotation);
+    }
+
+    // Function to add a body segment onto the snake in game
+    void GrowSnake()
+    {
+        // set the transform to be the transform of the body prefab
+        Transform bodySegment = Instantiate(this.bodyPrefab);
+
+        // Fix the postion to be behind the last
+        bodySegment.position = segments[segments.Count - 1].position;
+
+        // Add the segment to the list
+        segments.Add(bodySegment);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // The player collides with the goal
+        if (other.tag == "Goal")
+        {
+            GrowSnake();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Border")
+        {
+            SceneManager.LoadScene(lossScene);
+        }
     }
 }

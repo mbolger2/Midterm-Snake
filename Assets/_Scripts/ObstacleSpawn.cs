@@ -18,6 +18,7 @@ public class ObstacleSpawn : MonoBehaviour
 
     public void SpawnObstacle()
     {
+        
         // If the counter has surpassed rate
         if (spawnCounter < 2)
         {
