@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         lifetimeCounter += Time.deltaTime;
 
-        if (lifetimeCounter > 0.5)
+        if (lifetimeCounter > 0.25)
         {
             // We use the function to keep update clean
             MoveProj();
