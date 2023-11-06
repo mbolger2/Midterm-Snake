@@ -54,11 +54,15 @@ public class GoalSpawn : MonoBehaviour
             goalCounter ++;
         }
 
-        if (obstacleCounter < 1)
+        if (ScoreManager.Instance.score <= 40)
         {
-            // Spawn obstacle prefab at the position randomly selected
-            Instantiate(obstaclePrefab, spawnPoints[RandNumGen()].transform);
-            obstacleCounter ++;
+            if (obstacleCounter < 1)
+            {
+                // Spawn obstacle prefab at the position randomly selected
+                Instantiate(obstaclePrefab, spawnPoints[RandNumGen()].transform);
+                obstacleCounter++;
+            }
         }
+        
     }
 }
