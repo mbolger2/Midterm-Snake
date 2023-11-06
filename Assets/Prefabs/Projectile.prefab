@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   lifetime: 5
+  lifetimeCounter: 0
   projRig: {fileID: 6035635225155778859}
 --- !u!50 &6035635225155778859
 Rigidbody2D:
@@ -137,5 +138,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

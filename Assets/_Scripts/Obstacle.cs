@@ -24,7 +24,7 @@ public class Obstacle : MonoBehaviour
         {
             // Set the spawnCounter on the obstacle
             // script to decrement by 1
-            ObstacleSpawn.Instance.DecreaseObstacle();
+            GoalSpawn.Instance.SetObstacleSpawnCounter(0);
 
             // Remove the obstacle
             Destroy(this.gameObject);

@@ -6,18 +6,26 @@ public class GoalSpawn : MonoBehaviour
 {
     // The prefab with the goal will be instantiated
     public Transform goalPrefab;
+    public Transform obstaclePrefab;
 
     // Defining an array to hold the possible spawn points
     public GameObject[] spawnPoints = new GameObject[81];
 
     // A counter that holds the number of goals spawned
-    public int spawnCounter = 0;
+    public int goalCounter = 0;
+
+    public int obstacleCounter = 0;
 
     public static GoalSpawn Instance;
 
-    public void SetSpawnCounter(int temp)
+    public void SetGoalSpawnCounter(int temp)
     {
-        spawnCounter = temp;
+        goalCounter = temp;
+    }
+
+    public void SetObstacleSpawnCounter(int temp)
+    {
+        obstacleCounter = temp;
     }
 
     private void Start()
@@ -25,23 +33,32 @@ public class GoalSpawn : MonoBehaviour
         Instance = this;
     }
 
+    int RandNumGen()
+    {
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+
+        return randomIndex;
+    }
+
     // Update is called once per frame
     void Update()
     {
         // If the counter has surpassed rate
-        if (spawnCounter < 1)
+        if (goalCounter < 1)
         {
-            int randomIndex = Random.Range(0, spawnPoints.Length);
-
-            // Message to know where spawn
-            // Debug.Log("Spawning goal at " + spawnPoints[randomIndex].name);
-
             // Spawn the goal prefab at the position of the randomly selected
             // spawnpoint
-            Instantiate(goalPrefab, spawnPoints[randomIndex].transform);
-
+            Instantiate(goalPrefab, spawnPoints[RandNumGen()].transform);
+         
             // Set spawn counter
-            spawnCounter ++;
+            goalCounter ++;
+        }
+
+        if (obstacleCounter < 1)
+        {
+            // Spawn obstacle prefab at the position randomly selected
+            Instantiate(obstaclePrefab, spawnPoints[RandNumGen()].transform);
+            obstacleCounter ++;
         }
     }
 }

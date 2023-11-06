@@ -23,7 +23,7 @@ public class Goal : MonoBehaviour
             Destroy(this.gameObject);
 
             // Set the count of goals to 0
-            GoalSpawn.Instance.SetSpawnCounter(0);
+            GoalSpawn.Instance.SetGoalSpawnCounter(0);
         }
     }
 }

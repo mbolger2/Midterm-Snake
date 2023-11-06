@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public float speed;
 
     // Lifetime of Proj
-    public float lifetime;
+    public float lifetime = 5.0f;
 
     // The counter that keeps track of how long
     // this Proj has been around for
@@ -34,6 +34,11 @@ public class Projectile : MonoBehaviour
             lifetimeCounter = 0;
         }
 
+        if (lifetime == 5.0)
+        {
+            Destroy(this.gameObject);
+        }
+
         
 
         //// The deltaTime is added to the counter
@@ -52,7 +57,7 @@ public class Projectile : MonoBehaviour
     {
         if (projRig.transform.eulerAngles == new Vector3(0, 0, 0))
         {
-            //projRig.transform.position = projRig.transform.up; 
+            // projRig.transform.position = projRig.transform.up; 
         }
         
     }
