@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -167,7 +168,12 @@ public class PlayerMovement : MonoBehaviour
     void GrowSnake()
     {
         // set the transform to be the transform of the body prefab
-        Transform bodySegment = Instantiate(this.bodyPrefab);
+        Transform bodySegment = Instantiate(this.bodyPrefab, segments[segments.Count - 1].position,
+            segments[segments.Count - 1].rotation);
+
+        //CapsuleCollider2D snakeBody = bodySegment.AddComponent<CapsuleCollider2D>();
+        //snakeBody.isTrigger = true;
+
 
         // Fix the postion to be behind the last
         bodySegment.position = segments[segments.Count - 1].position;

@@ -14,6 +14,5 @@ public class PlayerCrossover : MonoBehaviour
         {
             SceneManager.LoadScene(lossScene);
         }
-        
     }
 }
