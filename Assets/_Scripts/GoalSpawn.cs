@@ -58,11 +58,17 @@ public class GoalSpawn : MonoBehaviour
         {
             if (obstacleCounter < 1)
             {
-                // Spawn obstacle prefab at the position randomly selected
-                Instantiate(obstaclePrefab, spawnPoints[RandNumGen()].transform);
-                obstacleCounter++;
+                // A temporary holder for the spawnpoint
+                Transform tempSpawn = spawnPoints[RandNumGen()].transform;
+
+                // The 
+                if (tempSpawn.transform.position != PlayerMovement.Instance.transform.position)
+                {
+                    // Spawn obstacle prefab at the position randomly selected
+                    Instantiate(obstaclePrefab, tempSpawn);
+                    obstacleCounter++;
+                }
             }
         }
-        
     }
 }

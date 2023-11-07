@@ -115,9 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fe394cc6eabe64fa80174931840bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
   lifetime: 5
   lifetimeCounter: 0
+  projPrefab: {fileID: 4860034574648306726}
+  projectile: {fileID: 4860034574648306726}
   projRig: {fileID: 6035635225155778859}
 --- !u!50 &6035635225155778859
 Rigidbody2D:
