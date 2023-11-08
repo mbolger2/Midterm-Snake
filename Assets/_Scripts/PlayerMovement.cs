@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     // The list containing the segments for the snake
     private List<Transform> segments = new List<Transform>();
 
+    // The collider for the body segments
+    CapsuleCollider2D bodyCollider;
+
     // The prefab for the body segment
     public Transform bodyPrefab;
 
@@ -171,15 +174,23 @@ public class PlayerMovement : MonoBehaviour
         Transform bodySegment = Instantiate(this.bodyPrefab, segments[segments.Count - 1].position,
             segments[segments.Count - 1].rotation);
 
-        //CapsuleCollider2D snakeBody = bodySegment.AddComponent<CapsuleCollider2D>();
-        //snakeBody.isTrigger = true;
-
 
         // Fix the postion to be behind the last
         bodySegment.position = segments[segments.Count - 1].position;
 
+        // Add a collider after the position is fixed so game
+        // does not end on goal pickup
+        bodySegment.gameObject.AddComponent<CapsuleCollider2D>();
+        
+        // Get the collider off the gameobject
+        bodyCollider = bodySegment.GetComponent<CapsuleCollider2D>();
+
+        // Set the collider to be a trigger
+        bodyCollider.isTrigger = true;
+
         // Add the segment to the list
         segments.Add(bodySegment);
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
