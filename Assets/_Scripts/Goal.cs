@@ -9,6 +9,8 @@ public class Goal : MonoBehaviour
     // The tag that must be on the other object
     public string scoringTag = "Player";
 
+    BoxCollider2D headCollider;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("Collided with object " + other.gameObject.name);
@@ -18,6 +20,9 @@ public class Goal : MonoBehaviour
         {            
             // Increase the score
             ScoreManager.Instance.AddScore(1);
+
+            headCollider = other.gameObject.GetComponent<BoxCollider2D>();
+            headCollider.isTrigger = false;
 
             // remove the goal
             Destroy(this.gameObject);

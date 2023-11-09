@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement Instance;
 
+    [Header("Player Collider")]
+    BoxCollider2D playerHeadCollider;
+
     [Header("Projectile")]
     // The proj prefab
     public Projectile projectilePrefab;
@@ -156,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
             Shoot();
         }
 
-        if (segments.Count == 81)
+        if (segments.Count == 80)
         {
             SceneManager.LoadScene(winScene);
         }
@@ -177,16 +180,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Fix the postion to be behind the last
         bodySegment.position = segments[segments.Count - 1].position;
-
-        // Add a collider after the position is fixed so game
-        // does not end on goal pickup
-        bodySegment.gameObject.AddComponent<CapsuleCollider2D>();
         
         // Get the collider off the gameobject
         bodyCollider = bodySegment.GetComponent<CapsuleCollider2D>();
-
-        // Set the collider to be a trigger
-        bodyCollider.isTrigger = true;
 
         // Add the segment to the list
         segments.Add(bodySegment);
@@ -198,8 +194,12 @@ public class PlayerMovement : MonoBehaviour
         // The player collides with the goal
         if (other.tag == "Goal")
         {
+           // Snake grows by 1
             GrowSnake();
+
         }
+
+        
     }
 
     void OnTriggerExit2D(Collider2D other)
